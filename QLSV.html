@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QLSV</title>
+</head>
+<body>
+<script>
+    let sinhvien =function (msv,ten,toan,ly,hoa){
+        this.msv=msv;
+        this.ten=ten;
+        this.toan=toan;
+        this.ly=ly;
+        this.hoa=hoa;
+        this.dtb=(toan+ly+hoa)/3;
+        this.show=function (){
+            return"msv:"+this.msv+"ho va ten:"+this.ten+"diem toan:"+this.toan+"diem ly:"+this.ly+"diem hoa:"+this.hoa+"dtb:"+this.dtb;
+        }
+    }
+    function QLSV() {
+    this.dssv=[ new sinhvien(1, "Trinh Van A", 9, 9, 9), new sinhvien(2, "Trinh Van B", 7, 8, 9), new sinhvien(3, "Trinh Van C", 5, 6, 7)]
+    }
+    this.add=function (sv) {
+        this.dssv.push(sv);
+    }
+    this.del=function (msv){
+        for (let i = 0; i < this.dssv.length; i++) {
+            if (msv==this.dssv[i].msv){
+                this.dssv.splice(i,1);
+            }
+        }
+    }
+    this.show=function (){
+        let str="res";
+        for (let i = 0; i < this.dssv.length; i++) {
+            str+=this.dssv[i].show()+"</br>";
+        }
+        return str;
+    }
+    this.edit=function (msv,sv){
+        for (let i = 0; i < this.dssv.length; i++) {
+            if (msv == this.dssv[i].msv){
+                this.dssv[i]=sv;
+            }
+        }
+    }
+    let qlsv=new QLSV();
+    document.getElementById("res").innerHTML=qlsv.show()
+    qlsv.add(new sinhvien(4,"Trinh Van D",5,4,6));
+    qlsv.edit(2,new sinhvien(2,"Naruto",4,4,4));
+    document.getElementById("res").innerHTML=qlsv.show()
+</script>
+</body>
+</html>
